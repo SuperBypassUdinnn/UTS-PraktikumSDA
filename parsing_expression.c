@@ -133,7 +133,7 @@ int main()
 
             default:
                 break;
-            }}while(pilihmode3 != 3)
+            }}while(pilihmode3 != 3);
 
             break;
 
