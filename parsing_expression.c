@@ -61,7 +61,9 @@ int main()
         if (pilihan == '4')
         {
             clearTerminal();
-            printf("\n\033[1mTerimakasih telah menggunakan Kalkulator Infix, Postfix, dan Prefix.\033[0m\n");
+            printf("--------------------------------------------------------------------\n");
+            printf("\033[1mTerimakasih telah menggunakan Kalkulator Infix, Postfix, dan Prefix.\033[0m\n");
+            printf("--------------------------------------------------------------------\n");
             break;
         }
         
