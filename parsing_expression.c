@@ -21,7 +21,6 @@ int main()
         printf("\nPilihlah : ");
         if (scanf("%d", &pilihan) != 1)
         {
-            printf("Pilihan harus berupa angka.\n");
             while (getchar() != '\n')
                 ;
             printf("\033[2J\033[H");
@@ -67,7 +66,6 @@ int main()
                 break;
 
             default:
-                printf("Pilihan Tidak valid");
                 break;
             }
 
@@ -102,7 +100,6 @@ int main()
                 break;
 
             default:
-                printf("Pilihan Tidak valid");
                 break;
             }
 
@@ -137,14 +134,12 @@ int main()
                 break;
 
             default:
-                printf("Pilihan Tidak valid");
                 break;
             }
 
             break;
 
         default:
-            printf("Pilihan Tidak valid");
             break;
         }
     }
