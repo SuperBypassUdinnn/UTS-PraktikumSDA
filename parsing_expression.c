@@ -120,6 +120,7 @@ int main()
             printf("\nPilihlah : ");
             scanf("%d", &pilihmode3);
 
+            do{
             switch (pilihmode3)
             {
             case 1:
@@ -130,12 +131,9 @@ int main()
                 // kode untuk prefix ke postfix
                 break;
 
-            case 3:
-                break;
-
             default:
                 break;
-            }
+            }}while(pilihmode3 != 3)
 
             break;
 
