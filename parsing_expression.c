@@ -140,7 +140,7 @@ int main()
                 }
 
                 printf("\nPilihlah : ");
-                pilihan + charTanpaBuffer();
+                pilihan = charTanpaBuffer();
                 
                 switch (pilihan)
                 {
