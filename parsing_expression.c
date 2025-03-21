@@ -123,6 +123,74 @@ char* prefixToInfix(char* prefix) {
     return result;
 }
 
+// Fungsi untuk mengkonversi postfix ke prefix
+char* postfixToPrefix(char* postfix) {
+    Stack* stack = createStack();
+    int length = strlen(postfix);
+
+    // Baca postfix dari kiri ke kanan
+    for (int i = 0; i < length; i++) {
+        char ch = postfix[i];
+
+        // Jika karakter adalah operand, push ke stack
+        if (isalnum(ch)) {
+            char* operand = (char*)malloc(2 * sizeof(char));
+            operand[0] = ch;
+            operand[1] = '\0';
+            push(stack, operand);
+        }
+        // Jika karakter adalah operator, pop dua operand dan gabungkan dengan operator
+        else if (isOperator(ch)) {
+            char* operand2 = pop(stack);
+            char* operand1 = pop(stack);
+            char* prefix = (char*)malloc((strlen(operand1) + strlen(operand2) + 2) * sizeof(char));
+            sprintf(prefix, "%c%s%s", ch, operand1, operand2);
+            push(stack, prefix);
+            free(operand1);
+            free(operand2);
+        }
+    }
+
+    // Hasil akhir ada di top stack
+    char* result = pop(stack);
+    free(stack);
+    return result;
+}
+
+// Fungsi untuk mengkonversi prefix ke postfix
+char* prefixToPostfix(char* prefix) {
+    Stack* stack = createStack();
+    int length = strlen(prefix);
+
+    // Baca prefix dari kanan ke kiri
+    for (int i = length - 1; i >= 0; i--) {
+        char ch = prefix[i];
+
+        // Jika karakter adalah operand, push ke stack
+        if (isalnum(ch)) {
+            char* operand = (char*)malloc(2 * sizeof(char));
+            operand[0] = ch;
+            operand[1] = '\0';
+            push(stack, operand);
+        }
+        // Jika karakter adalah operator, pop dua operand dan gabungkan dengan operator
+        else if (isOperator(ch)) {
+            char* operand1 = pop(stack);
+            char* operand2 = pop(stack);
+            char* postfix = (char*)malloc((strlen(operand1) + strlen(operand2) + 2) * sizeof(char));
+            sprintf(postfix, "%s%s%c", operand1, operand2, ch);
+            push(stack, postfix);
+            free(operand1);
+            free(operand2);
+        }
+    }
+
+    // Hasil akhir ada di top stack
+    char* result = pop(stack);
+    free(stack);
+    return result;
+}
+
 int main()
 {
     int pilihan;
@@ -202,6 +270,7 @@ int main()
                     case '1':
                     // kode untuk Infix ke prefix
                     break;
+                    
                     // Prefix ke Infix
                     case '2':
                     do{
@@ -223,7 +292,7 @@ int main()
                         pilihan = 0;
                         while (pilihan != '1' && pilihan != '2') pilihan = charTanpaBuffer();
                         } while(pilihan != '2');
-                    
+                        
                     break;
                 }
                 clearTerminal();
@@ -245,12 +314,52 @@ int main()
                 
                 switch (pilihan)
                 {
+                    // Postfix ke Prefix
                     case '1':
-                    // kode untuk Postfix ke prefix
+                    do{
+                        clearTerminal();
+                        printf("----------------------------------\n");
+                        printf("\033[1m~ Kalkulator Postfix ke Prefix ~\033[0m\n");
+                        printf("----------------------------------\n");
+                        
+                        char postfix[MAX_SIZE];
+                        printf("\nEkspresi Postfix: ");
+                        scanf("%s", postfix);
+                        char* prefix = postfixToPrefix(postfix);
+                        printf("Ekspresi Prefix: %s\n", prefix);
+                        printf("\n1. Lanjut");
+                        printf("\n2. Kembali\n");
+                        printf("\nPilihlah : ");
+                        free(prefix);
+                        
+                        pilihan = 0;
+                        while (pilihan != '1' && pilihan != '2') pilihan = charTanpaBuffer();
+                        } while(pilihan != '2');
+                    
                     break;
                     
+                    // Prefix ke Postfix
                     case '2':
-                    // kode untuk prefix ke Postfix
+                    do{
+                        clearTerminal();
+                        printf("----------------------------------\n");
+                        printf("\033[1m~ Kalkulator Prefix ke Postfix ~\033[0m\n");
+                        printf("----------------------------------\n");
+                        
+                        char prefix[MAX_SIZE];
+                        printf("\nEkspresi Prefix: ");
+                        scanf("%s", prefix);
+                        char* postfix = postfixToPrefix(prefix);
+                        printf("Ekspresi Postfix: %s\n", postfix);
+                        printf("\n1. Lanjut");
+                        printf("\n2. Kembali\n");
+                        printf("\nPilihlah : ");
+                        free(postfix);
+                        
+                        pilihan = 0;
+                        while (pilihan != '1' && pilihan != '2') pilihan = charTanpaBuffer();
+                        } while(pilihan != '2');
+                    
                     break;
                 }
                 clearTerminal();
