@@ -349,7 +349,7 @@ int main()
                         char prefix[MAX_SIZE];
                         printf("\nEkspresi Prefix: ");
                         scanf("%s", prefix);
-                        char* postfix = postfixToPrefix(prefix);
+                        char* postfix = prefixToPostfix(prefix);
                         printf("Ekspresi Postfix: %s\n", postfix);
                         printf("\n1. Lanjut");
                         printf("\n2. Kembali\n");
