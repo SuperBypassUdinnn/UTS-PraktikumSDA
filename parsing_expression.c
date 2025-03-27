@@ -181,7 +181,7 @@ char *postfixToInfix(char *postfix)
     return result;
 }
 
-char *reverse(char *str)
+char *reverseString(char *str)
 {
     int len = strlen(str);
     char *rev = (char *)malloc((len + 1) * sizeof(char));
@@ -206,10 +206,10 @@ void replaceBrackets(char *expr)
 
 char *infixToPrefix(char *infix)
 {
-    char *rev = reverse(infix);
+    char *rev = reverseString(infix);
     replaceBrackets(rev);
     char *postfix = infixToPostfix(rev);
-    char *prefix = reverse(postfix);
+    char *prefix = reverseString(postfix);
     free(rev);
     free(postfix);
     return prefix;
