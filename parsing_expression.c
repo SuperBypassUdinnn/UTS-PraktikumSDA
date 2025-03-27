@@ -123,7 +123,7 @@ char *infixToPostfix(char *infix)
                 postfix[k++] = *(pop(stack));
             }
             free(pop(stack));
-        }
+        } 
         else if (isOperator(ch))
         {
             while (!isEmpty(stack) && precedence(*(stack->items[stack->top])) >= precedence(ch))
@@ -164,7 +164,7 @@ char *postfixToInfix(char *postfix)
             operand[1] = '\0';
             push(stack, operand);
         }
-        else if (isOperator(ch))
+        else if (!isEmpty && isOperator(ch))
         {
             char *op2 = pop(stack);
             char *op1 = pop(stack);
@@ -231,7 +231,7 @@ char *prefixToInfix(char *prefix)
             operand[1] = '\0';
             push(stack, operand);
         }
-        else if (isOperator(ch))
+        else if (!isEmpty && isOperator(ch))
         {
             char *operand1 = pop(stack);
             char *operand2 = pop(stack);
@@ -264,7 +264,7 @@ char *postfixToPrefix(char *postfix)
             operand[1] = '\0';
             push(stack, operand);
         }
-        else if (isOperator(ch))
+        else if (!isEmpty && isOperator(ch))
         {
             char *operand2 = pop(stack);
             char *operand1 = pop(stack);
@@ -297,7 +297,7 @@ char *prefixToPostfix(char *prefix)
             operand[1] = '\0';
             push(stack, operand);
         }
-        else if (isOperator(ch))
+        else if (!isEmpty && isOperator(ch))
         {
             char *operand1 = pop(stack);
             char *operand2 = pop(stack);
