@@ -75,7 +75,6 @@ char *pop(Stack *stack)
 {
     if (isEmpty(stack))
     {
-        printf("Stack kosong\n");
         return NULL;
     }
     return stack->items[stack->top--];
