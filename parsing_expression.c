@@ -344,8 +344,6 @@ int main()
             break;
         }
 
-        clearTerminal();
-
         switch (pilihan)
         {
         case '1':
